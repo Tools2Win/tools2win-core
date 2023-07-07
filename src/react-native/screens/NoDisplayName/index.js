@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
-import { useDisplayName } from '../../hooks/UseDisplayName';
+import { useDisplayName } from '../../../hooks/useDisplayName';
 import { auth } from 'tools2win-core';
 
 const NoDisplayName = () => {

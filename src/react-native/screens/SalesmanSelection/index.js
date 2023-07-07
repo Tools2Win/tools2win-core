@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
 import { Input, ListItem, SearchBar } from 'react-native-elements';
-import { useSalesmanSelection } from '../../hooks/UseSalesmanSelection';
+import { useSalesmanSelection } from '../../../hooks/useSalesmanSelection';
 
 const SalesmanSelection = () => {
     const { salesmen, loading, error, selectSalesman } = useSalesmanSelection();

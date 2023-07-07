@@ -1,10 +1,15 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from 'tools2win-core';
-import AuthStackNavigator from '../../navigators/AuthStack';
+import { NavigationContainer } from '@react-navigation/native';
 import Acknowledgment from '../../screens/Acknowledgment';
 import NoDisplayName from '../../screens/NoDisplayName';
 import NoClient from '../../screens/NoClient';
 import SalesmanSelection from '../../screens/SalesmanSelection';
+import SignIn from '../../screens/SignIn';
+import ForgotPassword from '../../screens/ForgotPassword';
+import SignUp from '../../screens/SignUp';
+
+const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
     const { loading, user } = useAuth();
@@ -14,7 +19,11 @@ const AuthenticationManager = ({ children }) => {
     if (!user) {
         return (
             <NavigationContainer>
-                <AuthStackNavigator />
+                <Stack.Navigator>
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+                    <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+                    <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
+                </Stack.Navigator>
             </NavigationContainer>
         );
     }

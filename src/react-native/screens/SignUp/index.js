@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     TextInput, Button, StyleSheet, Alert, Image,
-    KeyboardAvoidingView, ScrollView, Platform
+    KeyboardAvoidingView, Platform
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { View } from 'react-native';
