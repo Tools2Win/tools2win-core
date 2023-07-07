@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { put } from '../api';
-import { apiConfigs } from '../api/apiConfigs';
 import { auth } from '../firebase';
+import { useApi } from './useApi';
 
 export const useDisplayName = () => {
+    const { put } = useApi
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const updateDisplayName = async (displayName) => {
         setLoading(true);
         try {
-            await put(apiConfigs.displayName.put, displayName);
+            await put('displayname', displayName)
             await auth.currentUser.getIdTokenResult(true);
         } catch (err) {
             setError(err.message);

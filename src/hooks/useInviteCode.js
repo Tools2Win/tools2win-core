@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { create, use } from '../api';
-import { apiConfigs } from '../api/apiConfigs';
+import useApi from './useApi';
 
 export const useInviteCode = () => {
+    const { post } = useApi();
     const [inviteCode, setInviteCode] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ export const useInviteCode = () => {
     const createInviteCode = async () => {
         setLoading(true);
         try {
-            const response = await create(apiConfigs.inviteCode.create);
+            const response = await post('invitecode');
             setInviteCode(response);
         } catch (err) {
             setError(err.message);
@@ -22,7 +22,7 @@ export const useInviteCode = () => {
     const consumeInviteCode = async (inviteCode) => {
         setLoading(true);
         try {
-            await use(apiConfigs.inviteCode.use, { Code: inviteCode });
+            await post(invitecode, { Code: inviteCode });
         } catch (err) {
             setError(err);
         } finally {

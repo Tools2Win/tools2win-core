@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { get, merge } from '../api';
-import { apiConfigs } from '../api/apiConfigs';
 import { auth } from '../firebase';
+import useApi from './useApi';
 
 export const useSalesmanSelection = () => {
+    const { get, post } = useApi();
     const [salesmen, setSalesmen] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ export const useSalesmanSelection = () => {
     const getSalesmen = async () => {
         setLoading(true);
         try {
-            const response = await get(apiConfigs.salesman.get);
+            const response = await get('salesman');
             setSalesmen(response);
         } catch (err) {
             setError(err.message);
@@ -23,7 +23,7 @@ export const useSalesmanSelection = () => {
     const selectSalesman = async (SalesmanCode) => {
         setLoading(true);
         try {
-            await merge(apiConfigs.userSalesman.merge, { ID: SalesmanCode });
+            await post('usersalesman', { ID: SalesmanCode });
             auth.currentUser.getIdTokenResult(true)
         } catch (err) {
             console.log(err)
