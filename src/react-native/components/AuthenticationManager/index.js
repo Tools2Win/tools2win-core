@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { useAuth } from 'tools2win-core';
+import useAuth from '../../../hooks/useAuth';
 import { NavigationContainer } from '@react-navigation/native';
 import Acknowledgment from '../../screens/Acknowledgment';
 import NoDisplayName from '../../screens/NoDisplayName';

@@ -3,6 +3,7 @@ import { Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import { signInWithCredential, FacebookAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
 import * as Facebook from 'expo-auth-session/providers/facebook';
+import { auth } from '../../../firebase';
 
 const FacebookLoginButton = () => {
     const [request, response, promptAsync] = Facebook.useAuthRequest({
@@ -14,12 +15,13 @@ const FacebookLoginButton = () => {
             const result = await promptAsync();
             if (result.type === 'success') {
                 const credential = FacebookAuthProvider.credential(result.params.access_token);
+                console.log(credential)
+                console.log(auth)
                 const signInResult = await signInWithCredential(auth, credential);
-
+                console.log(signInResult)
                 // Get additional user info
                 const additionalUserInfo = getAdditionalUserInfo(signInResult);
                 const facebookPictureUrl = additionalUserInfo.profile.picture.data.url;
-
                 console.log(facebookPictureUrl)
 
                 // Save profile picture URL to AsyncStorage
