@@ -9,7 +9,7 @@ import SeparatorWithText from './SeparatorWithText';
 import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from 'tools2win-core';
+import { auth } from '../../../firebase';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -25,6 +25,9 @@ const SignIn = ({ navigation }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
+      console.log(auth)
+      console.log(email, password)
+      console.log(error)
       setError(error)
     }
   }

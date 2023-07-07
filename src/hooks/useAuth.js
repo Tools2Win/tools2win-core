@@ -5,6 +5,10 @@ const useAuth = () => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
+    const signOut = async () => {
+        await auth.signOut();
+    }
+
     useEffect(() => {
         return auth.onIdTokenChanged(async user => {
             if (user) {
@@ -26,7 +30,7 @@ const useAuth = () => {
         });
     }, []);
 
-    return { user, loading };
+    return { loading, user, signOut };
 };
 
 export default useAuth;

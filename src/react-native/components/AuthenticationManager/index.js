@@ -8,11 +8,12 @@ import SalesmanSelection from '../../screens/SalesmanSelection';
 import SignIn from '../../screens/SignIn';
 import ForgotPassword from '../../screens/ForgotPassword';
 import SignUp from '../../screens/SignUp';
+import AuthContext from '../../../contexts/AuthContext';
 
 const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
-    const { loading, user } = useAuth();
+    const { loading, user, signOut } = useAuth();
 
     if (loading) return null;
 
@@ -33,7 +34,11 @@ const AuthenticationManager = ({ children }) => {
     if (!user.clientID) return <NoClient />;
     if (!user.salesmanCode) return <SalesmanSelection />;
 
-    return children;
+    return (
+        <AuthContext.Provider value={{ user, signOut }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthenticationManager;
