@@ -3,9 +3,8 @@ import { auth } from "../firebase";
 
 const BASE_URL = 'https://tools2win-api-v3.azurewebsites.net/api';
 
-const execute = async (httpMethod, apiMethod, objectType, data, params) => {
-    console.log("OOOOOOO")
-    let url = `${BASE_URL}/${apiMethod}/${objectType}`;
+const execute = async (httpMethod, resource, data, params) => {
+    let url = `${BASE_URL}/${resource}`;
 
     if (params) {
         const queryParameters = new URLSearchParams(params).toString();
@@ -42,8 +41,8 @@ const execute = async (httpMethod, apiMethod, objectType, data, params) => {
 };
 
 export default {
-    get: (apiMethod, objectType, params) => execute('GET', apiMethod, objectType, undefined, params),
-    post: (apiMethod, objectType, data) => execute('POST', apiMethod, objectType, data),
-    put: (apiMethod, objectType, data) => execute('PUT', apiMethod, objectType, data),
-    delete: (apiMethod, objectType, data) => execute('DELETE', apiMethod, objectType, data),
+    get: (resource, data, params) => execute('GET', resource, undefined, params),
+    post: (resource, data) => execute('POST', resource, data),
+    put: (resource, data) => execute('PUT', resource, data),
+    delete: (resource, data, params) => execute('DELETE', resource, undefined, params),
 };

@@ -5,26 +5,32 @@ const useApi = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const apiRequest = useCallback(async (requestType, objectType, data, params) => {
+    const apiRequest = useCallback(async (requestType, resource, data, params) => {
         try {
             setLoading(true);
-            const responseData = await api.default[requestType](objectType, data, params);
-            console.log(responseData)
+            setError(null);
+            const responseData = await api.default[requestType](resource, data, params);
             return responseData;
         } catch (err) {
+            console.log(JSON.stringify(err))
             setError(err);
-            throw err;
         } finally {
             setLoading(false);
         }
     }, []);
 
-    const get = useCallback((objectType, params) => apiRequest('get', objectType, undefined, params), [apiRequest]);
-    const post = useCallback((objectType, data) => apiRequest('post', objectType, data), [apiRequest]);
-    const put = useCallback((objectType, data) => apiRequest('put', objectType, data), [apiRequest]);
-    const deleteItem = useCallback((objectType, data) => apiRequest('delete', objectType, data), [apiRequest]);
+    const clearError = () => {
+        setError(null);
+    };
 
-    return { get, post, put, delete: deleteItem, loading, error };
+    const apiMethods = {
+        get: useCallback((resource, params) => apiRequest('get', resource, undefined, params), [apiRequest]),
+        post: useCallback((resource, data) => apiRequest('post', resource, data), [apiRequest]),
+        put: useCallback((resource, data) => apiRequest('put', resource, data), [apiRequest]),
+        delete: useCallback((resource, params) => apiRequest('delete', resource, undefined, params), [apiRequest]),
+    };
+
+    return { ...apiMethods, loading, error, clearError };
 };
 
 export default useApi;
