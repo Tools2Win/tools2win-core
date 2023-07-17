@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import { useInviteCode } from '../../../hooks/useInviteCode';
 import { Card, Input } from 'react-native-elements';
-import { auth } from 'tools2win-core';
+import { auth } from '../../../firebase';
 
 const NoClient = () => {
     const [enteredInviteCode, setEnteredInviteCode] = useState('');

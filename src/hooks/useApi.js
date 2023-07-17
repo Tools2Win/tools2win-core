@@ -12,7 +12,6 @@ const useApi = () => {
             const responseData = await api.default[requestType](resource, data, params);
             return responseData;
         } catch (err) {
-            console.log(JSON.stringify(err))
             setError(err);
         } finally {
             setLoading(false);

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { sendEmailVerification } from 'firebase/auth';
-import { auth } from 'tools2win-core';
+import { auth } from '../../../firebase';
 
 const Acknowledgment = ({ navigation }) => {
     const [isVerifying, setIsVerifying] = useState(false);

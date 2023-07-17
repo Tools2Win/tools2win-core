@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { auth } from '../firebase';
-import { useApi } from './useApi';
+import useApi from './useApi';
 
 export const useDisplayName = () => {
-    const { put } = useApi
+    const { put } = useApi();
+    console.log(put)
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 

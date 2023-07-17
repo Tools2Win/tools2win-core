@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useApi from './useApi';
 
 export const useInviteCode = () => {
-    const { post } = useApi();
+    const { post, get } = useApi();
     const [inviteCode, setInviteCode] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ export const useInviteCode = () => {
     const consumeInviteCode = async (inviteCode) => {
         setLoading(true);
         try {
-            await post(invitecode, { Code: inviteCode });
+            await get('invitecode', { InviteCode: inviteCode });
         } catch (err) {
             setError(err);
         } finally {

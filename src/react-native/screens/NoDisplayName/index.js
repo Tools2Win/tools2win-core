@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import { useDisplayName } from '../../../hooks/useDisplayName';
-import { auth } from 'tools2win-core';
+import { auth } from '../../../firebase';
 
 const NoDisplayName = () => {
     const [firstName, setFirstName] = useState('');

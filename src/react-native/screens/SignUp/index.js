@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { View } from 'react-native';
-import { auth } from 'tools2win-core';
+import { auth } from '../../../firebase';
 
 const SignUpScreen = () => {
     const [email, setEmail] = useState('');
@@ -37,12 +37,9 @@ const SignUpScreen = () => {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.container}
+            style={{ flex: 1 }}
         >
-            <View
-                contentContainerStyle={styles.container}
-                keyboardShouldPersistTaps="handled"
-            >
+            <View style={styles.container}>
                 <Image
                     source={require('../../../assets/logo.png')}
                     style={styles.logo}
@@ -89,10 +86,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     logo: {
-        width: 250,
-        height: 250,
+        width: '60%',
+        height: '30%',
         alignSelf: 'center',
         marginBottom: 20,
+        resizeMode: 'contain',
     }
 });
 
