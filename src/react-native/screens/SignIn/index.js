@@ -25,10 +25,7 @@ const SignIn = ({ navigation }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.log(auth)
-      console.log(email, password)
-      console.log(error)
-      setError(error)
+      setError(error.message)
     }
   }
 
