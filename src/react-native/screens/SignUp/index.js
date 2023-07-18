@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     TextInput, Button, StyleSheet, Alert, Image,
-    KeyboardAvoidingView, Platform
+    KeyboardAvoidingView, Platform, ScrollView
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { View } from 'react-native';
@@ -37,61 +37,64 @@ const SignUpScreen = () => {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={{ flex: 1 }}
+            style={styles.container}
         >
-            <View style={styles.container}>
-                <Image
-                    source={require('../../../assets/logo.png')}
-                    style={styles.logo}
-                    resizeMode="contain"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={setEmail}
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChangeText={setConfirmPassword}
-                    secureTextEntry
-                />
-                <Button title="Sign Up" onPress={signUp} />
-            </View>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                <View style={styles.innerContainer}>
+                    <Image
+                        source={require('../../../assets/logo.png')}
+                        style={styles.logo}
+                        resizeMode="contain"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={setEmail}
+                        autoCapitalize="none"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
+                        secureTextEntry
+                    />
+                    <Button title="Sign Up" onPress={signUp} />
+                </View>
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flexGrow: 1,
-        justifyContent: 'center',
+        flex: 1,
+    },
+    innerContainer: {
         padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     input: {
         width: '80%',
         padding: 8,
         margin: 16,
         borderBottomWidth: 1,
-        alignSelf: 'center'
     },
     logo: {
         width: '60%',
         height: '30%',
-        alignSelf: 'center',
         marginBottom: 20,
         resizeMode: 'contain',
-    }
+    },
 });
 
 export default SignUpScreen;
