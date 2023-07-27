@@ -32,10 +32,17 @@ const execute = async (httpMethod, resource, data, params) => {
     const responseText = await response.text();
 
     if (response.ok) {
-        return responseText ? JSON.parse(responseText) : {};
+        let responseData;
+        try {
+            responseData = responseText ? JSON.parse(responseText) : {};
+        } catch (error) {
+            responseData = responseText;
+        }
+        return responseData;
     } else {
         const error = new Error(responseText);
         error.status = response.status;
+        console.log(error)
         throw error;
     }
 };
