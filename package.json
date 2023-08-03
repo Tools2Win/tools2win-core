@@ -2,7 +2,8 @@
   "name": "tools2win-core",
   "version": "1.0.0",
   "description": "Tools2Win Core Libaries",
-  "main": "./src/index.js",
+  "main": "./src/web.js",
+  "react-native": "./src/native.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
