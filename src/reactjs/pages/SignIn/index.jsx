@@ -11,7 +11,7 @@ import { auth } from '../../../firebase';
 import logo from '../../../assets/logo.png';
 import FacebookLoginButton from 'tools2win-core/src/reactjs/pages/SignIn/FacebookLoginButton';
 
-const SignIn = () => {
+const SignIn = ({ onForgotPasswordClick, onSignUpClick }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -46,8 +46,8 @@ const SignIn = () => {
                 <SignInButton onClick={handleSignIn} />
 
                 <div style={styles.additionalButtons}>
-                    <ForgotPasswordButton />
-                    <SignUpButton />
+                    <ForgotPasswordButton onClick={onForgotPasswordClick} />
+                    <SignUpButton onClick={onSignUpClick} />
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SignUpButton = ({ onClick }) => (
+    
     <div onClick={onClick} style={styles.container}>
         <span style={styles.signUpText}>New User? Sign Up</span>
     </div>
