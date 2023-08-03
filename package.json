@@ -19,6 +19,7 @@
   "dependencies": {
     "@cubejs-client/core": "^0.33.12",
     "@cubejs-client/react": "^0.33.12",
+    "fb": "^2.0.0",
     "firebase": "^9.23.0"
   },
   "peerDependencies": {
