@@ -5,7 +5,7 @@ const CUBEJS_API_URL = 'https://peaceful-condor.aws-us-east-1.cubecloudapp.dev/c
 
 let apiTokenPromise;
 
-export default cube = cubejs(
+const cube = cubejs(
     () => {
         if (!apiTokenPromise) {
             apiTokenPromise = api.default.get('cubejsjwt')
@@ -15,3 +15,7 @@ export default cube = cubejs(
     },
     { apiUrl: CUBEJS_API_URL }
 );
+
+console.log(cube)
+
+export default cube;
