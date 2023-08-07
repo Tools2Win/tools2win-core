@@ -23,12 +23,7 @@ const AuthenticationManager = ({ children }) => {
                 return <SignUp goBack={() => setView('login')} />;
             case 'login':
             default:
-                return (
-                    <SignIn
-                        onForgotPasswordClick={() => setView('forgotPassword')}
-                        onSignUpClick={() => setView('signUp')}
-                    />
-                );
+                return null;
         }
     }
 
