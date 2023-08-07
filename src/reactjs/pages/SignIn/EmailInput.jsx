@@ -1,3 +1,5 @@
+import React from 'react';
+
 const EmailInput = ({ value, onChange }) => (
     <input
         type="email"

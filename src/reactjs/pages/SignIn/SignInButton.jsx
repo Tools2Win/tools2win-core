@@ -1,3 +1,5 @@
+
+import React from 'react';
 const SignInButton = ({ onClick }) => (
     <button onClick={onClick} style={styles.button}>
         Sign In

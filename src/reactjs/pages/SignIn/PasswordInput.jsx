@@ -1,3 +1,5 @@
+import React from 'react';
+
 const PasswordInput = ({ value, onChange }) => (
     <input
         type="password"
