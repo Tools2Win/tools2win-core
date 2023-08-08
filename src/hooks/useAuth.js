@@ -11,6 +11,7 @@ const useAuth = () => {
 
     useEffect(() => {
         return auth.onIdTokenChanged(async user => {
+            console.log(user)
             if (user) {
                 const idTokenResult = await user.getIdTokenResult();
                 const newUser = {
