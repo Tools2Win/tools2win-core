@@ -37,7 +37,7 @@ const AuthenticationManager = ({ children }) => {
     if (!user.salesmanCode) return <SalesmanSelection />;
 
     return (
-        <AuthContext.Provider value={{ user, signOut, refreshAuth }}>
+        <AuthContext.Provider value={{ user, refreshAuth, signOut }}>
             {children}
         </AuthContext.Provider>
     );
