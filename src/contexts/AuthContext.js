@@ -2,8 +2,8 @@ import { createContext } from 'react';
 
 const AuthContext = createContext({
     user: null,
+    refreshAuth: () => { },
     signOut: () => { },
-    refreshAuth: () => { }
 });
 
 export default AuthContext;
