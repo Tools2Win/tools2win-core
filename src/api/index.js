@@ -28,6 +28,8 @@ const execute = async (httpMethod, resource, data, params) => {
         body: data ? JSON.stringify(data) : undefined,
     };
 
+    console.log(token)
+
     const response = await fetch(url, options);
     const responseText = await response.text();
 

@@ -9,9 +9,24 @@ const useAuth = () => {
         await auth.signOut();
     }
 
+    const refreshAuth = async () => {
+        await auth.currentUser.getIdTokenResult(true).then(idTokenResult => {
+            const newUser = {
+                ...user,
+                clientID: idTokenResult.claims.clientID,
+                clientName: idTokenResult.claims.clientName,
+                salesmanCode: idTokenResult.claims.salesmanCode,
+                roles: idTokenResult.claims.roles ? idTokenResult.claims.roles : [],
+                emailVerified: idTokenResult.claims.email_verified,
+                displayName: idTokenResult.claims.name
+            };
+
+            setUser(newUser);
+        });
+    };
+
     useEffect(() => {
         return auth.onIdTokenChanged(async user => {
-            console.log(user)
             if (user) {
                 const idTokenResult = await user.getIdTokenResult();
                 const newUser = {
@@ -19,7 +34,7 @@ const useAuth = () => {
                     clientID: idTokenResult.claims.clientID,
                     clientName: idTokenResult.claims.clientName,
                     salesmanCode: idTokenResult.claims.salesmanCode,
-                    roles: idTokenResult.claims.roles,
+                    roles: idTokenResult.claims.roles ? idTokenResult.claims.roles : [],
                     emailVerified: idTokenResult.claims.email_verified,
                     displayName: idTokenResult.claims.name
                 };
@@ -31,7 +46,7 @@ const useAuth = () => {
         });
     }, []);
 
-    return { loading, user, signOut };
+    return { loading, user, signOut, refreshAuth };
 };
 
 export default useAuth;

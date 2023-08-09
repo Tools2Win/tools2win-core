@@ -10,7 +10,7 @@ import SignUp from '../../pages/SignUp';
 import AuthContext from '../../../contexts/AuthContext';
 
 const AuthenticationManager = ({ children }) => {
-    const { loading, user, signOut } = useAuth();
+    const { loading, user, signOut, refreshAuth } = useAuth();
     const [view, setView] = useState('login');
 
     if (loading) return null;
@@ -37,7 +37,7 @@ const AuthenticationManager = ({ children }) => {
     if (!user.salesmanCode) return <SalesmanSelection />;
 
     return (
-        <AuthContext.Provider value={{ user, signOut }}>
+        <AuthContext.Provider value={{ user, signOut, refreshAuth }}>
             {children}
         </AuthContext.Provider>
     );
