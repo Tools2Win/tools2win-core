@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import Acknowledgment from '../../pages/Acknowledgment';
-// import NoDisplayName from '../../screens/NoDisplayName';
+import NoDisplayName from '../../pages/NoDisplayName';
 import NoClient from '../../pages/NoClient';
 import SalesmanSelection from '../../pages/SalesmanSelection';
 import SignIn from '../../pages/SignIn';
@@ -10,6 +10,7 @@ import SignUp from '../../pages/SignUp';
 import AuthContext from '../../../contexts/AuthContext';
 
 const AuthenticationManager = ({ children }) => {
+    console.log('test')
     const { loading, user, signOut, refreshAuth } = useAuth();
     const [view, setView] = useState('login');
 
@@ -33,6 +34,7 @@ const AuthenticationManager = ({ children }) => {
     }
 
     if (!user.emailVerified) return <Acknowledgment />;
+    if (!user.displayName) return <NoDisplayName />;
     if (!user.clientID) return <NoClient />;
     if (!user.salesmanCode) return <SalesmanSelection />;
 
