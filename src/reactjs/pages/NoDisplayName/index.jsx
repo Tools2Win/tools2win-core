@@ -49,7 +49,7 @@ const NoDisplayName = () => {
                 </button>
 
                 <button
-                    style={styles.logoutButton}
+                    style={styles.buttonOutline}
                     onClick={handleLogout}
                     disabled={loading}
                 >
@@ -69,57 +69,69 @@ const NoDisplayName = () => {
 const styles = {
     container: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        padding: '20px',
         width: '100vw',
         height: '100vh',
+        fontFamily: 'Arial, sans-serif',
+        backgroundColor: '#f4f4f4'
     },
     title: {
         fontSize: '24px',
         marginBottom: '8px',
+        color: '#333'
     },
     subtitle: {
         fontSize: '16px',
         textAlign: 'center',
-        marginBottom: '16px',
+        marginBottom: '24px',
+        color: '#555'
     },
     inputContainer: {
-        width: '100%',
-        marginBottom: '12px',
+        width: '80%',
+        maxWidth: '400px',
     },
     input: {
-        borderWidth: '1px',
-        borderColor: '#ccc',
+        display: 'block',
+        width: '100%',
         padding: '10px',
         marginBottom: '10px',
         borderRadius: '4px',
-        width: '100%',
+        border: '1px solid #ccc',
+        fontSize: '16px'
     },
     button: {
-        backgroundColor: '#6200EE',
+        display: 'block',
+        width: '100%',
         padding: '10px',
         textAlign: 'center',
         borderRadius: '4px',
         marginBottom: '10px',
         color: '#FFFFFF',
-        border: 'none',
+        backgroundColor: '#6200EE',
         cursor: 'pointer',
+        border: 'none',
+        fontSize: '16px'
     },
-    logoutButton: {
-        borderColor: '#6200EE',
-        borderWidth: '1px',
+    buttonOutline: {
+        display: 'block',
+        width: '100%',
         padding: '10px',
         textAlign: 'center',
         borderRadius: '4px',
+        marginBottom: '10px',
         color: '#6200EE',
-        cursor: 'pointer',
-    },
-    buttonText: {
-        color: '#FFFFFF',
+        backgroundColor: 'transparent',
+        border: '1px solid #6200EE',
+        fontSize: '16px',
+        cursor: 'pointer'
     },
     errorText: {
         color: 'red',
+        textAlign: 'center',
+        marginTop: '10px'
     },
 };
 
