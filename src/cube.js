@@ -16,6 +16,4 @@ const cube = cubejs(
     { apiUrl: CUBEJS_API_URL }
 );
 
-console.log(cube)
-
 export default cube;
