@@ -43,7 +43,7 @@ const SignIn = ({ navigation }) => {
           resizeMode="contain"
         />
 
-        <FacebookLoginButton />
+        {/* <FacebookLoginButton /> */}
 
         <SeparatorWithText text="OR" />
 
