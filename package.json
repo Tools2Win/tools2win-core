@@ -23,6 +23,7 @@
     "@react-native-async-storage/async-storage": "^1.19.2",
     "@react-navigation/stack": "^6.3.17",
     "expo-auth-session": "~3.8.0",
+    "expo-crypto": "^12.4.1",
     "fb": "^2.0.0",
     "firebase": "^9.23.0",
     "react-native-elements": "^3.4.3"
