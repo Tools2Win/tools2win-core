@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Tools2Win/tools2win-core#readme",
   "dependencies": {
-    "@cubejs-client/core": "^0.33.47",
+    "@cubejs-client/core": "^0.10.0",
     "@cubejs-client/react": "^0.33.47",
     "@react-native-async-storage/async-storage": "^1.19.2",
     "@react-navigation/stack": "^6.3.17",
