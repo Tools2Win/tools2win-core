@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import NoDisplayName from '../../screens/NoDisplayName';
 // import NoClient from '../../screens/NoClient';
 // import SalesmanSelection from '../../screens/SalesmanSelection';
-// import SignIn from '../../screens/SignIn';
+import SignIn from '../../screens/SignIn';
 // import ForgotPassword from '../../screens/ForgotPassword';
 // import SignUp from '../../screens/SignUp';
 import AuthContext from '../../../contexts/AuthContext';
