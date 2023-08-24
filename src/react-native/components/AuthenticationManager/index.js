@@ -16,8 +16,6 @@ const AuthenticationManager = ({ children }) => {
     const { loading, user, signOut } = useAuth();
 
     if (loading) return null;
-    return children;
-    
 
     if (!user) {
         return (
@@ -30,6 +28,10 @@ const AuthenticationManager = ({ children }) => {
             </NavigationContainer>
         );
     }
+    return children;
+    
+
+    
 
     if (!user.emailVerified) return <Acknowledgment />;
     if (!user.displayName) return <NoDisplayName />;
