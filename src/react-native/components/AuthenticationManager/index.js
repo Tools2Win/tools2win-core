@@ -13,7 +13,34 @@ import AuthContext from '../../../contexts/AuthContext';
 const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
+    const { loading, user, signOut } = useAuth();
+
+    if (loading) return null;
     return children;
+    
+
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+                    <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+                    <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
+
+    if (!user.emailVerified) return <Acknowledgment />;
+    if (!user.displayName) return <NoDisplayName />;
+    if (!user.clientID) return <NoClient />;
+    if (!user.salesmanCode) return <SalesmanSelection />;
+
+    return (
+        <AuthContext.Provider value={{ user, signOut }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthenticationManager;
