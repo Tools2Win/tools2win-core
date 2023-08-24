@@ -13,9 +13,9 @@ import AuthContext from '../../../contexts/AuthContext';
 const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
-    const { loading, user, signOut } = useAuth();
+    //const { loading, user, signOut } = useAuth();
 
-    if (loading) return null;
+    //if (loading) return null;
 
     return null;
 
