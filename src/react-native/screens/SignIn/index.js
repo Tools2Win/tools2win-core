@@ -15,6 +15,13 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  return <Text>wtffffff</Text>
+  return <Text>wtffffff</Text>
+  return <Text>wtffffff</Text>
+  return <Text>wtffffff</Text>
+  return <Text>wtffffff</Text>
+  return <Text>wtffffff</Text>
+
   const handleSignIn = async () => {
     if (email === '' || password === '') {
       setError('Email and password are mandatory.')
@@ -28,7 +35,10 @@ const SignIn = ({ navigation }) => {
     }
   }
 
-  return null;
+  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
+  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
+  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
+  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
 
 
   return (
