@@ -4,7 +4,6 @@ import ErrorMessage from './ErrorMessage';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import SignInButton from './SignInButton';
-// import FacebookLoginButton from './FacebookLoginButton';
 import SeparatorWithText from './SeparatorWithText';
 import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
@@ -42,10 +41,6 @@ const SignIn = ({ navigation }) => {
           style={styles.logo}
           resizeMode="contain"
         />
-
-        {/* <FacebookLoginButton /> */}
-
-        <SeparatorWithText text="OR" />
 
         <View>
           <EmailInput
