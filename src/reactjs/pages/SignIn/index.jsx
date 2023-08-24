@@ -36,10 +36,6 @@ const SignIn = ({ onForgotPasswordClick, onSignUpClick }) => {
                 <img src={logo} alt="Logo" style={styles.logo} />
             </div>
 
-            <FacebookLoginButton />
-
-            <SeparatorWithText text="OR" />
-
             <div style={styles.form}>
                 <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
                 <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)} />

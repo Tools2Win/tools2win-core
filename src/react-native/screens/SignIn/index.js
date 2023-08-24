@@ -4,7 +4,6 @@ import ErrorMessage from './ErrorMessage';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import SignInButton from './SignInButton';
-import SeparatorWithText from './SeparatorWithText';
 import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
