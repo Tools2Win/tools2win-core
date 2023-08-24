@@ -8,6 +8,7 @@ import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
+import { Text } from 'react-native-elements';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -27,13 +28,21 @@ const SignIn = ({ navigation }) => {
     }
   }
 
+  return null;
+
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
-        {!!error && <ErrorMessage message={error} />}
+        <Text>Testa;lsdkjfa;lksdjfl;aksdfl;jad;lfkdj</Text>
+        <Text>Testa;lsdkjfa;lksdjfl;aksdfl;jad;lfkdj</Text>
+        <Text>Testa;lsdkjfa;lksdjfl;aksdfl;jad;lfkdj</Text>
+        <Text>Testa;lsdkjfa;lksdjfl;aksdfl;jad;lfkdj</Text>
+        <Text>Testa;lsdkjfa;lksdjfl;aksdfl;jad;lfkdj</Text>
+        {/* {!!error && <ErrorMessage message={error} />}
 
         <Image
           source={require('../../../assets/logo.png')}
@@ -56,7 +65,7 @@ const SignIn = ({ navigation }) => {
           <ForgotPasswordButton navigation={navigation} onPress={() => navigation.navigate('ForgotPassword')} />
 
           <SignUpButton onPress={() => navigation.navigate('SignUp')} />
-        </View>
+        </View> */}
       </ScrollView>
     </KeyboardAvoidingView>
   );
