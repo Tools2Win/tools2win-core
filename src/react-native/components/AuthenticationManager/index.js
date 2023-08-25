@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 //import NoDisplayName from '../../screens/NoDisplayName';
 //import NoClient from '../../screens/NoClient';
 //import SalesmanSelection from '../../screens/SalesmanSelection';
+import SignIn from '../../screens/SignIn';
 // import ForgotPassword from '../../screens/ForgotPassword';
 // import SignUp from '../../screens/SignUp';
 //import AuthContext from '../../../contexts/AuthContext';
@@ -19,7 +20,15 @@ const AuthenticationManager = ({ children }) => {
     if (loading) return <Text>asdfjkl;</Text>;
 
     if (!user) {
-        return <Text>getting along</Text>
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
     }
     return children;
 
