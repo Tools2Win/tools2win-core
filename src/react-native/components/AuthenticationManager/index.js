@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
 import { Text } from 'react-native'
+import Test from '../../components/Test'
 //import Acknowledgment from '../../screens/Acknowledgment';
 //import NoDisplayName from '../../screens/NoDisplayName';
 //import NoClient from '../../screens/NoClient';
@@ -18,14 +19,18 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return <Text>asdfjkl;</Text>;
 
-    //return <Text>WHYYYYYYY</Text>
-
     if (!user) {
         return (
-            <NavigationContainer><Text>Testasdfasdf</Text></NavigationContainer>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
+                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
         );
     }
-    return children;
+    return <Text>Interest</Text>;
 
     // if (!user.emailVerified) return <Acknowledgment />;
     // if (!user.displayName) return <NoDisplayName />;
