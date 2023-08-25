@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
-import ErrorMessage from './ErrorMessage';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import SignInButton from './SignInButton';
-import SignUpButton from './SignUpButton';
-import ForgotPasswordButton from './ForgotPasswordButton';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+// import ErrorMessage from './ErrorMessage';
+// import EmailInput from './EmailInput';
+// import PasswordInput from './PasswordInput';
+// import SignInButton from './SignInButton';
+// import SignUpButton from './SignUpButton';
+// import ForgotPasswordButton from './ForgotPasswordButton';
+// import { signInWithEmailAndPassword } from 'firebase/auth';
+// import { auth } from '../../../firebase';
 
 const SignIn = ({ navigation }) => {
   return <Text>Sign INNNNNNN</Text>
