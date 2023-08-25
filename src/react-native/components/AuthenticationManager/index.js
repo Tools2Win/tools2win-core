@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 //import NoDisplayName from '../../screens/NoDisplayName';
 //import NoClient from '../../screens/NoClient';
 //import SalesmanSelection from '../../screens/SalesmanSelection';
-// import SignIn from '../../screens/SignIn';
+import SignIn from '../../screens/SignIn';
 // import ForgotPassword from '../../screens/ForgotPassword';
 // import SignUp from '../../screens/SignUp';
 //import AuthContext from '../../../contexts/AuthContext';
@@ -18,23 +18,20 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return <Text>asdfjkl;</Text>;
 
-    return <Text>WHYYYYYYY</Text>
+    //return <Text>WHYYYYYYY</Text>
 
-    // if (!user) {
-    //     return (
-    //         <NavigationContainer>
-    //             <Stack.Navigator>
-    //                 <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
-    //                 {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
-    //                 {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
-    //             </Stack.Navigator>
-    //         </NavigationContainer>
-    //     );
-    // }
-    // return children;
-
-
-
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
+    return children;
 
     // if (!user.emailVerified) return <Acknowledgment />;
     // if (!user.displayName) return <NoDisplayName />;
