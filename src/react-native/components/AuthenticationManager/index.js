@@ -30,6 +30,17 @@ const AuthenticationManager = () => {
             </NavigationContainer>
         );
     }
+
+    if (!user.emailVerified) return <Acknowledgment />;
+    if (!user.displayName) return <NoDisplayName />;
+    if (!user.clientID) return <NoClient />;
+    if (!user.salesmanCode) return <SalesmanSelection />;
+
+    return (
+        <AuthContext.Provider value={{ user, signOut }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthenticationManager;
