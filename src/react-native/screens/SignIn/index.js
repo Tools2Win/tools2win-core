@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
-import ErrorMessage from './ErrorMessage';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import SignInButton from './SignInButton';
-import SignUpButton from './SignUpButton';
-import ForgotPasswordButton from './ForgotPasswordButton';
+//import ErrorMessage from './ErrorMessage';
+//import EmailInput from './EmailInput';
+//import PasswordInput from './PasswordInput';
+//import SignInButton from './SignInButton';
+//import SignUpButton from './SignUpButton';
+//import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { Text } from 'react-native-elements';
@@ -15,11 +15,6 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  return <Text>wtffffff</Text>
-  return <Text>wtffffff</Text>
-  return <Text>wtffffff</Text>
-  return <Text>wtffffff</Text>
-  return <Text>wtffffff</Text>
   return <Text>wtffffff</Text>
 
   const handleSignIn = async () => {
@@ -36,10 +31,6 @@ const SignIn = ({ navigation }) => {
   }
 
   return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
-  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
-  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
-  return <Text>asd;lfkja;lsdkjf;laksjdf;laskdjf</Text>;
-
 
   return (
     <KeyboardAvoidingView
