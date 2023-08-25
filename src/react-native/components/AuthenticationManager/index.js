@@ -14,7 +14,7 @@ import { Text } from 'react-native'
 const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
-    //const { loading, user, signOut } = useAuth();
+    const { loading, user, signOut } = useAuth();
 
     if (loading) return <Text>asdfjkl;</Text>;
 
