@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
 import { Text } from 'react-native'
@@ -21,13 +20,11 @@ const AuthenticationManager = ({ children }) => {
 
     if (!user) {
         return (
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
-                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
-                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
-                </Stack.Navigator>
-            </NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
+                {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+            </Stack.Navigator>
         );
     }
     return <Text>Interest</Text>;
