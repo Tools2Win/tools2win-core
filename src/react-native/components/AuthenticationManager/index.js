@@ -17,7 +17,7 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return <Text>asdfjkl;</Text>;
 
-    return "WJHYYYYYYY!!!!"
+    return <Text>TESTTTTTT;</Text>;
 
     // if (!user) {
     //     return (
