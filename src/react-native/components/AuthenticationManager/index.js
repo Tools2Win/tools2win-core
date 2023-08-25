@@ -18,21 +18,18 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return <Text>asdfjkl;</Text>;
 
-    return <Text>WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYY</Text>
-
-
-    // if (!user) {
-    //     return (
-    //         <NavigationContainer>
-    //             <Stack.Navigator>
-    //                 <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
-    //                 {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
-    //                 {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
-    //             </Stack.Navigator>
-    //         </NavigationContainer>
-    //     );
-    // }
-    // return children;
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    {/* <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
+    return children;
 
 
 
