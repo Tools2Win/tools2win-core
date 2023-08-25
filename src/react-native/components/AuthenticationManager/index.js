@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
 import { Text } from 'react-native'
