@@ -1,66 +1,65 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
-// import ErrorMessage from './ErrorMessage';
-// import EmailInput from './EmailInput';
-// import PasswordInput from './PasswordInput';
-// import SignInButton from './SignInButton';
-// import SignUpButton from './SignUpButton';
-// import ForgotPasswordButton from './ForgotPasswordButton';
-// import { signInWithEmailAndPassword } from 'firebase/auth';
-// import { auth } from '../../../firebase';
+import ErrorMessage from './ErrorMessage';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+import SignInButton from './SignInButton';
+import SignUpButton from './SignUpButton';
+import ForgotPasswordButton from './ForgotPasswordButton';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase';
 
 const SignIn = ({ navigation }) => {
-  return <Text>Sign INNNNNNN</Text>
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [error, setError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  // const handleSignIn = async () => {
-  //   if (email === '' || password === '') {
-  //     setError('Email and password are mandatory.')
-  //     return;
-  //   }
+  const handleSignIn = async () => {
+    if (email === '' || password === '') {
+      setError('Email and password are mandatory.')
+      return;
+    }
 
-  //   try {
-  //     await signInWithEmailAndPassword(auth, email, password);
-  //   } catch (error) {
-  //     setError(error.message)
-  //   }
-  // }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setError(error.message)
+    }
+  }
 
-  // return (
-  //   <KeyboardAvoidingView
-  //     behavior={Platform.OS === "ios" ? "padding" : "height"}
-  //     style={styles.container}
-  //   >
-  //     <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
-  //       {!!error && <ErrorMessage message={error} />}
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+        {!!error && <ErrorMessage message={error} />}
 
-  //       <Image
-  //         source={require('../../../assets/logo.png')}
-  //         style={styles.logo}
-  //         resizeMode="contain"
-  //       />
+        <Image
+          source={require('../../../assets/logo.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
 
-  //       <View>
-  //         <EmailInput
-  //           value={email}
-  //           onChangeText={setEmail}
-  //         />
-  //         <PasswordInput
-  //           value={password}
-  //           onChangeText={setPassword}
-  //         />
+        <View>
+          <EmailInput
+            value={email}
+            onChangeText={setEmail}
+          />
+          <PasswordInput
+            value={password}
+            onChangeText={setPassword}
+          />
 
-  //         <SignInButton onPress={handleSignIn} />
+          <SignInButton onPress={handleSignIn} />
 
-  //         <ForgotPasswordButton navigation={navigation} onPress={() => navigation.navigate('ForgotPassword')} />
+          <ForgotPasswordButton navigation={navigation} onPress={() => navigation.navigate('ForgotPassword')} />
 
-  //         <SignUpButton onPress={() => navigation.navigate('SignUp')} />
-  //       </View>
-  //     </ScrollView>
-  //   </KeyboardAvoidingView>
-  // );
+          <SignUpButton onPress={() => navigation.navigate('SignUp')} />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
 };
 
 const styles = StyleSheet.create({
