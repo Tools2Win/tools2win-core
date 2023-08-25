@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
 import { Text } from 'react-native'
-// import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 //import Acknowledgment from '../../screens/Acknowledgment';
 //import NoDisplayName from '../../screens/NoDisplayName';
 //import NoClient from '../../screens/NoClient';
