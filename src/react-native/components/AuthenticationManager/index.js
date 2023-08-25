@@ -22,7 +22,7 @@ const AuthenticationManager = ({ children }) => {
         return (
             <NavigationContainer>
                 <Stack.Navigator>
-                    {/* <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} /> */}
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
                     {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
                     {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
                 </Stack.Navigator>
