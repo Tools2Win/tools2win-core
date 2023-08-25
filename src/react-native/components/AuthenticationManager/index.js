@@ -1,3 +1,4 @@
+
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,7 +18,7 @@ const AuthenticationManager = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
+                <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
