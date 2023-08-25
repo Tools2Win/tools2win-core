@@ -8,7 +8,7 @@ import { StyleSheet, View, Image, KeyboardAvoidingView, ScrollView } from 'react
 //import ForgotPasswordButton from './ForgotPasswordButton';
 //import { signInWithEmailAndPassword } from 'firebase/auth';
 //import { auth } from '../../../firebase';
-import { Text } from 'react-native-elements';
+import { Text } from 'react-native';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');

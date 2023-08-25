@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import useAuth from '../../../hooks/useAuth';
+import { Text } from 'react-native'
 //import { NavigationContainer } from '@react-navigation/native';
 //import Acknowledgment from '../../screens/Acknowledgment';
 //import NoDisplayName from '../../screens/NoDisplayName';
@@ -17,23 +18,22 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return <Text>asdfjkl;</Text>;
 
-    return <Text>TESTTTTTT;</Text>;
 
-    // if (!user) {
-    //     return (
-    //         <NavigationContainer>
-    //             <Stack.Navigator>
-    //                 <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
-    //                 {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
-    //                 {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
-    //             </Stack.Navigator>
-    //         </NavigationContainer>
-    //     );
-    // }
-    // return children;
-    
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+                    {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} /> */}
+                    {/* <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
+    return children;
 
-    
+
+
 
     // if (!user.emailVerified) return <Acknowledgment />;
     // if (!user.displayName) return <NoDisplayName />;
