@@ -17,28 +17,30 @@ const AuthenticationManager = ({ children }) => {
 
     if (loading) return null;
 
-    if (!user) {
-        return (
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
-                    <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
-                    <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        );
-    }
+    return null;
 
-    if (!user.emailVerified) return <Acknowledgment />;
-    if (!user.displayName) return <NoDisplayName />;
-    if (!user.clientID) return <NoClient />;
-    if (!user.salesmanCode) return <SalesmanSelection />;
+    // if (!user) {
+    //     return (
+    //         <NavigationContainer>
+    //             <Stack.Navigator>
+    //                 <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
+    //                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+    //                 <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
+    //             </Stack.Navigator>
+    //         </NavigationContainer>
+    //     );
+    // }
 
-    return (
-        <AuthContext.Provider value={{ user, signOut }}>
-            {children}
-        </AuthContext.Provider>
-    );
+    // if (!user.emailVerified) return <Acknowledgment />;
+    // if (!user.displayName) return <NoDisplayName />;
+    // if (!user.clientID) return <NoClient />;
+    // if (!user.salesmanCode) return <SalesmanSelection />;
+
+    // return (
+    //     <AuthContext.Provider value={{ user, signOut }}>
+    //         {children}
+    //     </AuthContext.Provider>
+    // );
 };
 
 export default AuthenticationManager; G
