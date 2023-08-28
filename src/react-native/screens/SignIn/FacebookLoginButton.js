@@ -1,42 +1,39 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import { signInWithCredential, FacebookAuthProvider, getAdditionalUserInfo } from 'firebase/auth';
+import * as Facebook from 'expo-auth-session/providers/facebook';
 import { auth } from '../../../firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FacebookLoginButton = () => {
+    const [request, response, promptAsync] = Facebook.useAuthRequest({
+        clientId: "456224369281980",
+        scopes: []
+    });
+
     const handleSignInWithFacebook = async () => {
         try {
-            const result = await LoginManager.logInWithPermissions(['public_profile, email']);
-            if (result.isCancelled) {
-                throw new Error('User cancelled the login process');
+            const result = await promptAsync();
+            if (result.type === 'success') {
+                const credential = FacebookAuthProvider.credential(result.params.access_token);
+                const signInResult = await signInWithCredential(auth, credential);
+                // Get additional user info
+                const additionalUserInfo = getAdditionalUserInfo(signInResult);
+                const facebookPictureUrl = additionalUserInfo.profile.picture.data.url;
+                console.log(facebookPictureUrl)
+
+                // Save profile picture URL to AsyncStorage
+                await AsyncStorage.setItem('facebookProfilePicture', facebookPictureUrl);
             }
-
-            // Get the access token
-            const data = await AccessToken.getCurrentAccessToken();
-            if (!data) {
-                throw new Error('Something went wrong obtaining access token');
-            }
-
-            const credential = FacebookAuthProvider.credential(data.accessToken);
-            const signInResult = await signInWithCredential(auth, credential);
-
-            // Get additional user info
-            const additionalUserInfo = getAdditionalUserInfo(signInResult);
-            const facebookPictureUrl = additionalUserInfo.profile.picture.data.url;
-            console.log(facebookPictureUrl)
-
-            // Save profile picture URL to AsyncStorage
-            await AsyncStorage.setItem('facebookProfilePicture', facebookPictureUrl);
-        } catch (error) {
-            alert(`Facebook Login Error: ${error.message}`);
+        } catch ({ message }) {
+            alert(`Facebook Login Error: ${message}`);
         }
     }
 
     return (
         <Button
+            disabled={!request}
             title="Facebook"
             onPress={handleSignInWithFacebook}
             buttonStyle={{ backgroundColor: '#1877F2' }}
@@ -48,7 +45,7 @@ const FacebookLoginButton = () => {
                 />
             }
         />
-    );
+    )
 };
 
 export default FacebookLoginButton;
