@@ -8,8 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FacebookLoginButton = () => {
     const [request, response, promptAsync] = Facebook.useAuthRequest({
-        clientId: "456224369281980",
-        scopes: []
+        clientId: "456224369281980"
     });
 
     const handleSignInWithFacebook = async () => {

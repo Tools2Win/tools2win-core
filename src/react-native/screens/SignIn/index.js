@@ -43,10 +43,6 @@ const SignIn = ({ navigation }) => {
           resizeMode="contain"
         />
 
-        <FacebookLoginButton />
-
-        <SeparatorWithText text="OR" />
-
         <View>
           <EmailInput
             value={email}
