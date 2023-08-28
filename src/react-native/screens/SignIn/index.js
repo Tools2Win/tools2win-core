@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { StyleSheet, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
 import ErrorMessage from './ErrorMessage';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import SignInButton from './SignInButton';
-import FacebookLoginButton from './FacebookLoginButton';
-import SeparatorWithText from './SeparatorWithText';
 import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
