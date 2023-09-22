@@ -10,7 +10,6 @@ import SignUp from '../../pages/SignUp';
 import AuthContext from '../../../contexts/AuthContext';
 
 const AuthenticationManager = ({ children }) => {
-    console.log('test')
     const { loading, user, signOut, refreshAuth } = useAuth();
     const [view, setView] = useState('login');
 
