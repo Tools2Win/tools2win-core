@@ -1,7 +1,7 @@
 // index.js
 import { auth } from "../firebase";
 
-const BASE_URL = 'https://tools2win-api-v3.azurewebsites.net/api';
+const BASE_URL = 'https://tools2win-api-v4.azurewebsites.net/api';
 
 const execute = async (httpMethod, resource, data, params) => {
     let url = `${BASE_URL}/${resource}`;
