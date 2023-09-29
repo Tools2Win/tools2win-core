@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 const AuthenticationManager = ({ children }) => {
     const { loading, user, signOut } = useAuth();
 
-    const doesUserHaveRole = (allowedRoles) => {
+    const userHasAllowedRole = (allowedRoles) => {
         if (!allowedRoles) return true;
         return allowedRoles.some(allowedRole => user.roles?.includes(allowedRole));
     };
@@ -42,7 +42,7 @@ const AuthenticationManager = ({ children }) => {
     if (!user.salesmanCode) return <SalesmanSelection />;
 
     return (
-        <AuthContext.Provider value={{ user, signOut, doesUserHaveRole }}>
+        <AuthContext.Provider value={{ user, signOut, userHasAllowedRole }}>
             {children}
         </AuthContext.Provider>
     );
