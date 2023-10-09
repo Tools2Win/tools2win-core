@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
+import {
+    View, Text, TextInput, TouchableOpacity,
+    ActivityIndicator, StyleSheet, Image,
+    KeyboardAvoidingView
+} from 'react-native';
 import { useInviteCode } from '../../../hooks/useInviteCode';
-import { Card, Input } from 'react-native-elements';
 import { auth } from '../../../firebase';
 
 const NoClient = () => {
@@ -19,43 +22,42 @@ const NoClient = () => {
     }
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.container}
-        >
-            <View>
-                <View style={styles.headingContainer}>
-                    <Text style={styles.heading}>Join an Organization</Text>
-                    <Text style={styles.subHeading}>
-                        You don't belong to an organization yet. Please enter the invite code to associate with an organization:
-                    </Text>
-                </View>
-                <Card containerStyle={styles.cardContainer}>
-                    <Input
-                        placeholder="Invite Code"
-                        value={enteredInviteCode}
-                        onChangeText={setEnteredInviteCode}
-                        inputContainerStyle={styles.input}
-                    />
-                    <TouchableOpacity
-                        style={[styles.button, loading && styles.buttonDisabled]}
-                        onPress={handleConsumeInviteCode}
-                        disabled={loading}
-                    >
-                        {loading ? <ActivityIndicator size="small" color="#FFF" /> : <Text style={styles.buttonText}>Submit</Text>}
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.button, styles.buttonLogout]}
-                        onPress={handleLogout}
-                    >
-                        <Text style={styles.buttonText}>Logout</Text>
-                    </TouchableOpacity>
-                    {error && (
-                        <Text style={styles.errorMessage}>
-                            {error.message || 'An error occurred while joining the client.'}
-                        </Text>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <Image
+                source={require('../../../assets/art_organization.jpg')}
+                style={styles.logo}
+                resizeMode="contain"
+            />
+            <Text style={styles.title}>Join an Organization</Text>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Invite Code"
+                    value={enteredInviteCode}
+                    onChangeText={setEnteredInviteCode}
+                />
+                <TouchableOpacity
+                    style={[styles.button, loading && styles.buttonDisabled]}
+                    onPress={handleConsumeInviteCode}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <ActivityIndicator size="small" color="#FFFFFF" />
+                    ) : (
+                        <Text style={styles.buttonText}>Submit</Text>
                     )}
-                </Card>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonLogout}
+                    onPress={handleLogout}
+                >
+                    <Text>Logout</Text>
+                </TouchableOpacity>
+                {error && (
+                    <Text style={styles.errorText}>
+                        {error.message || 'An error occurred while joining the client.'}
+                    </Text>
+                )}
             </View>
         </KeyboardAvoidingView>
     );
@@ -65,55 +67,54 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        padding: 16,
-        backgroundColor: '#f7f7f7'
-    },
-    headingContainer: {
         alignItems: 'center',
-        marginBottom: 16
+        padding: 20,
+        backgroundColor: '#FEFEFE'
     },
-    heading: {
+    title: {
         fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 8
+        marginBottom: 8,
     },
-    subHeading: {
-        fontSize: 16,
-        textAlign: 'center',
-        color: '#555'
-    },
-    cardContainer: {
-        marginBottom: 20,
-        padding: 20
+    inputContainer: {
+        width: '100%',
+        marginBottom: 12,
     },
     input: {
-        borderBottomWidth: 1,
-        marginBottom: 16
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 4,
     },
     button: {
-        backgroundColor: '#4C7BDC',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 5,
-        marginVertical: 5,
-        alignItems: 'center'
+        backgroundColor: '#F25929',
+        padding: 10,
+        alignItems: 'center',
+        borderRadius: 4,
+        marginBottom: 10,
     },
     buttonDisabled: {
         backgroundColor: '#a0a0a0'
     },
     buttonLogout: {
-        backgroundColor: '#DC4C4C'
+        borderColor: '#F25929',
+        borderWidth: 1,
+        padding: 10,
+        alignItems: 'center',
+        borderRadius: 4,
     },
     buttonText: {
-        color: '#FFF',
-        fontSize: 16
+        color: '#FFFFFF',
     },
-    errorMessage: {
+    errorText: {
         color: 'red',
-        marginTop: 16,
-        textAlign: 'center',
-        fontSize: 14
-    }
+    },
+    logo: {
+        width: '60%',
+        height: '30%',
+        marginBottom: 20,
+        resizeMode: 'contain',
+    },
 });
 
 export default NoClient;

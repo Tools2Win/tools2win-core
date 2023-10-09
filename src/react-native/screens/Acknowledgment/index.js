@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Alert, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { sendEmailVerification } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
@@ -31,6 +31,11 @@ const Acknowledgment = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Image
+                source={require('../../../assets/art_verificationlink.jpg')}
+                style={styles.logo}
+                resizeMode="contain"
+            />
             <Text style={styles.text}>Please check your email for a verification link.</Text>
             <Text style={styles.subText}>If you can't find the email, check your spam/junk folder.</Text>
             <TouchableOpacity style={styles.button} onPress={handleResendVerification}>
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#f7f7f7'
+        backgroundColor: '#FCFEFD'
     },
     text: {
         textAlign: 'center',
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
         color: '#555'
     },
     button: {
-        backgroundColor: '#4C7BDC',
+        backgroundColor: '#F25929',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
@@ -78,7 +83,13 @@ const styles = StyleSheet.create({
     },
     spacer: {
         height: 20
-    }
+    },
+    logo: {
+        width: '60%',
+        height: '30%',
+        marginBottom: 20,
+        resizeMode: 'contain',
+    },
 });
 
 export default Acknowledgment;

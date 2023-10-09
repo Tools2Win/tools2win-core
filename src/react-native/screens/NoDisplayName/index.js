@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ActivityIndicator,
+    StyleSheet,
+    Image,
+    KeyboardAvoidingView,
+} from 'react-native';
 import { useDisplayName } from '../../../hooks/useDisplayName';
 import { auth } from '../../../firebase';
 
@@ -20,12 +29,13 @@ const NoDisplayName = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <Image
+                source={require('../../../assets/art_displayname.jpg')}
+                style={styles.logo}
+                resizeMode="contain"
+            />
             <Text style={styles.title}>Display Name</Text>
-            <Text style={styles.subtitle}>
-                Your display name will be visible to other members of the organization.
-                It helps in identifying who you are within the organization.
-            </Text>
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
@@ -67,7 +77,7 @@ const NoDisplayName = () => {
                     </Text>
                 )}
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -99,14 +109,14 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     button: {
-        backgroundColor: '#6200EE',
+        backgroundColor: '#F25929',
         padding: 10,
         alignItems: 'center',
         borderRadius: 4,
         marginBottom: 10,
     },
     logoutButton: {
-        borderColor: '#6200EE',
+        borderColor: '#F25929',
         borderWidth: 1,
         padding: 10,
         alignItems: 'center',
@@ -117,6 +127,12 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: 'red',
+    },
+    logo: {
+        width: '60%',
+        height: '30%',
+        marginBottom: 20,
+        resizeMode: 'contain',
     },
 });
 

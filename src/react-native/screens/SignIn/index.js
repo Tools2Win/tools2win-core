@@ -64,6 +64,7 @@ const SignIn = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#F5F5F5',
     flex: 1,
     padding: 20,
     justifyContent: 'center',
