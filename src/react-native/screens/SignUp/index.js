@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import {
-    TextInput, Button, StyleSheet, Alert, Image,
-    KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Text
+    StyleSheet, Alert, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { View } from 'react-native';
 import { auth } from '../../../firebase';
+import { Button, useTheme, Input } from '@rneui/themed';
 
 const SignUpScreen = () => {
+    const { theme } = useTheme();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,7 +38,7 @@ const SignUpScreen = () => {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.container}
+            style={[{ backgroundColor: theme.colors.background }, styles.container]}
         >
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.innerContainer}>
@@ -46,33 +47,28 @@ const SignUpScreen = () => {
                         style={styles.logo}
                         resizeMode="contain"
                     />
-                    <TextInput
-                        style={styles.input}
+                    <Input
                         placeholder="Email"
                         value={email}
                         onChangeText={setEmail}
                         autoCapitalize="none"
+                        leftIcon={{ type: 'font-awesome', name: 'envelope', color: 'grey' }}
                     />
-                    <TextInput
-                        style={styles.input}
+                    <Input
                         placeholder="Password"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
+                        leftIcon={{ type: 'material', name: 'lock', color: 'grey' }}
                     />
-                    <TextInput
-                        style={styles.input}
+                    <Input
                         placeholder="Confirm Password"
                         value={confirmPassword}
                         onChangeText={setConfirmPassword}
                         secureTextEntry
+                        leftIcon={{ type: 'material', name: 'lock', color: 'grey' }}
                     />
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={signUp}
-                    >
-                        <Text style={styles.buttonText}>Sign Up</Text>
-                    </TouchableOpacity>
+                    <Button type='solid' buttonStyle={styles.button} title='Sign Up' onPress={signUp} />
                 </View>
             </ScrollView>
         </KeyboardAvoidingView>
@@ -81,7 +77,6 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FCFCFC',
         flex: 1,
     },
     innerContainer: {
@@ -96,17 +91,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     button: {
-        backgroundColor: '#F25929',
-        paddingVertical: 15,  // updated padding
-        paddingHorizontal: 20,  // updated padding
         borderRadius: 4,
-        marginBottom: 10,
-        alignSelf: 'center',  // added to center the button
-        minWidth: '80%',  // added to ensure a minimum width
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#FFFFFF',
+        marginTop: 30,
+        minWidth: '80%',
     },
     logo: {
         width: '60%',

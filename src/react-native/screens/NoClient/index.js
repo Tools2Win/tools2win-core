@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
-    View, Text, TextInput, TouchableOpacity,
-    ActivityIndicator, StyleSheet, Image,
+    View, StyleSheet, Image,
     KeyboardAvoidingView
 } from 'react-native';
 import { useInviteCode } from '../../../hooks/useInviteCode';
 import { auth } from '../../../firebase';
+import { Text, Input, Button } from '@rneui/themed';
 
 const NoClient = () => {
     const [enteredInviteCode, setEnteredInviteCode] = useState('');
@@ -28,31 +28,18 @@ const NoClient = () => {
                 style={styles.logo}
                 resizeMode="contain"
             />
-            <Text style={styles.title}>Join an Organization</Text>
+            <Text h4 style={styles.title}>Join an Organization</Text>
             <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
+                <Input
                     placeholder="Invite Code"
                     value={enteredInviteCode}
                     onChangeText={setEnteredInviteCode}
                 />
-                <TouchableOpacity
-                    style={[styles.button, loading && styles.buttonDisabled]}
-                    onPress={handleConsumeInviteCode}
-                    disabled={loading}
-                >
-                    {loading ? (
-                        <ActivityIndicator size="small" color="#FFFFFF" />
-                    ) : (
-                        <Text style={styles.buttonText}>Submit</Text>
-                    )}
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.buttonLogout}
-                    onPress={handleLogout}
-                >
-                    <Text>Logout</Text>
-                </TouchableOpacity>
+
+                <Button type='solid' buttonStyle={styles.button} title='Submit' onPress={handleConsumeInviteCode} disabled={loading} />
+
+                <Button type='outline' buttonStyle={styles.button} title='Logout' onPress={handleLogout} disabled={loading} />
+
                 {error && (
                     <Text style={styles.errorText}>
                         {error.message || 'An error occurred while joining the client.'}
@@ -69,11 +56,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#FEFEFE'
     },
     title: {
-        fontSize: 24,
-        marginBottom: 8,
+        marginBottom: 20,
+        fontWeight: 'bold'
     },
     inputContainer: {
         width: '100%',
@@ -87,9 +73,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     button: {
-        backgroundColor: '#F25929',
         padding: 10,
-        alignItems: 'center',
         borderRadius: 4,
         marginBottom: 10,
     },

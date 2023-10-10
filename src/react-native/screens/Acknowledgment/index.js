@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { View, StyleSheet, Alert, Image } from 'react-native';
 import { sendEmailVerification } from 'firebase/auth';
 import { auth } from '../../../firebase';
+import { Text, useTheme, Button } from '@rneui/themed';
 
 const Acknowledgment = ({ navigation }) => {
+    const { theme } = useTheme();
     const [isVerifying, setIsVerifying] = useState(false);
 
     const handleRefreshToken = useCallback(async () => {
@@ -29,6 +31,7 @@ const Acknowledgment = ({ navigation }) => {
         }
     };
 
+
     return (
         <View style={styles.container}>
             <Image
@@ -36,16 +39,11 @@ const Acknowledgment = ({ navigation }) => {
                 style={styles.logo}
                 resizeMode="contain"
             />
-            <Text style={styles.text}>Please check your email for a verification link.</Text>
-            <Text style={styles.subText}>If you can't find the email, check your spam/junk folder.</Text>
-            <TouchableOpacity style={styles.button} onPress={handleResendVerification}>
-                <Text style={styles.buttonText}>Resend Verification Email</Text>
-            </TouchableOpacity>
-            <View style={styles.spacer} />
-            <TouchableOpacity style={styles.button} onPress={handleRefreshToken} disabled={isVerifying}>
-                {isVerifying ? <ActivityIndicator color="#FFF" /> : <Text style={styles.buttonText}>I've verified my email</Text>}
-            </TouchableOpacity>
-        </View>
+            <Text h4 style={[{ color: theme.colors.grey0 }, styles.text]}>Please check your email for a verification link.</Text>
+            <Text style={[{ color: theme.colors.grey0 }, styles.subText]}>If you can't find the email, check your spam/junk folder</Text>
+            <Button type='outline' buttonStyle={styles.button} title='Resend Verification Email' onPress={handleResendVerification} />
+            <Button type='solid' buttonStyle={styles.button} title="I've verified my email" onPress={handleRefreshToken} disabled={isVerifying} />
+        </View >
     );
 };
 
@@ -55,34 +53,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#FCFEFD'
     },
     text: {
         textAlign: 'center',
         marginBottom: 10,
-        fontSize: 18,
         fontWeight: 'bold'
     },
     subText: {
         textAlign: 'center',
         marginBottom: 30,
-        color: '#555'
     },
     button: {
-        backgroundColor: '#F25929',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
         borderRadius: 5,
-        marginVertical: 5,
-        minWidth: 200,
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: '#FFF',
-        fontSize: 16
-    },
-    spacer: {
-        height: 20
+        marginBottom: 20,
+        minWidth: '80%',
     },
     logo: {
         width: '60%',

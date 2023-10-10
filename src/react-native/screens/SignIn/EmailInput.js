@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-import { Input } from "react-native-elements";
+import { Input } from "@rneui/themed";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const EmailInput = ({ value, onChangeText }) => (

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
+import { Text } from '@rneui/themed';
 
 const SignUpText = ({ onPress }) => (
     <TouchableOpacity onPress={onPress}>
@@ -11,7 +12,6 @@ const styles = StyleSheet.create({
     signUpText: {
         marginTop: 20,
         textAlign: 'center',
-        color: '#2a7bff',
     },
 });
 

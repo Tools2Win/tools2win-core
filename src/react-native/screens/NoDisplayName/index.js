@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import {
     View,
-    Text,
-    TextInput,
     TouchableOpacity,
     ActivityIndicator,
     StyleSheet,
     Image,
     KeyboardAvoidingView,
+    TextInput,
 } from 'react-native';
 import { useDisplayName } from '../../../hooks/useDisplayName';
 import { auth } from '../../../firebase';
+import { Text, Input, Button } from '@rneui/themed';
 
 const NoDisplayName = () => {
     const [firstName, setFirstName] = useState('');
@@ -35,42 +35,20 @@ const NoDisplayName = () => {
                 style={styles.logo}
                 resizeMode="contain"
             />
-            <Text style={styles.title}>Display Name</Text>
+            <Text h4 style={styles.title}>Display Name</Text>
             <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
+                <Input
                     placeholder="First Name"
                     value={firstName}
                     onChangeText={setFirstName}
                 />
-
-                <TextInput
-                    style={styles.input}
+                <Input
                     placeholder="Last Name"
                     value={lastName}
                     onChangeText={setLastName}
                 />
-
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleSubmit}
-                    disabled={loading}
-                >
-                    {loading ? (
-                        <ActivityIndicator size="small" color="#FFFFFF" />
-                    ) : (
-                        <Text style={styles.buttonText}>Continue</Text>
-                    )}
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.logoutButton}
-                    onPress={handleLogout}
-                    disabled={loading}
-                >
-                    <Text>Logout</Text>
-                </TouchableOpacity>
-
+                <Button type='solid' buttonStyle={styles.button} title='Continue' onPress={handleSubmit} />
+                <Button type='outline' buttonStyle={styles.button} title='Logout' onPress={handleLogout} disabled={loading} />
                 {error && (
                     <Text style={styles.errorText}>
                         {error}
@@ -89,8 +67,8 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 24,
         marginBottom: 8,
+        fontWeight: 'bold'
     },
     subtitle: {
         fontSize: 16,
@@ -101,29 +79,10 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 12,
     },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 10,
-        marginBottom: 10,
-        borderRadius: 4,
-    },
     button: {
-        backgroundColor: '#F25929',
         padding: 10,
-        alignItems: 'center',
         borderRadius: 4,
         marginBottom: 10,
-    },
-    logoutButton: {
-        borderColor: '#F25929',
-        borderWidth: 1,
-        padding: 10,
-        alignItems: 'center',
-        borderRadius: 4,
-    },
-    buttonText: {
-        color: '#FFFFFF',
     },
     errorText: {
         color: 'red',
