@@ -22,8 +22,34 @@ const theme = createTheme({
     mode: 'light',
     components: {
         Text: {
-            h4Style: {
+            style: {
+                textAlign: 'center',
+                marginBottom: 30,
                 color: colors.text.primary
+            },
+            h4Style: {
+                marginBottom: 10,
+                fontWeight: 'bold'
+            }
+        },
+        Image: {
+            resizeMode: 'contain',
+            containerStyle: {
+                alignSelf: 'center',
+            },
+            style: {
+                width: 250,
+                height: 250,
+            }
+        },
+        Input: {
+            leftIcon: {
+                size: 20
+            }
+        },
+        Button: {
+            style: {
+                marginBottom: 20
             }
         }
     }
@@ -46,8 +72,8 @@ const AuthenticationManager = ({ children }) => {
             <ThemeProvider theme={theme}>
                 <NavigationContainer>
                     <Stack.Navigator>
-                        <Stack.Screen name="Signin" component={SignIn} options={{ headerShown: false }} />
-                        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+                        <Stack.Screen name="SignIn" component={SignIn} options={{ title: 'Sign In', headerShown: false }} />
+                        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ title: 'Forgot Password' }} />
                         <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
                     </Stack.Navigator>
                 </NavigationContainer>

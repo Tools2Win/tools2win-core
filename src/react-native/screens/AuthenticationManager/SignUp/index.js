@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import {
-    StyleSheet, Alert, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity
+    Alert
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { View } from 'react-native';
 import { auth } from '../../../../firebase';
-import { Button, useTheme, Input } from '@rneui/themed';
+import { Button, Input, Image } from '@rneui/themed';
+import KeyboardAvoidingView from '../../../components/KeyboardAvoidingView';
+const image = require('../../../../assets/art_signup.jpg');
 
 const SignUpScreen = () => {
-    const { theme } = useTheme();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,72 +36,14 @@ const SignUpScreen = () => {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={[{ backgroundColor: theme.colors.background }, styles.container]}
-        >
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                <View style={styles.innerContainer}>
-                    <Image
-                        source={require('../../../../assets/art_signup.jpg')}
-                        style={styles.logo}
-                        resizeMode="contain"
-                    />
-                    <Input
-                        placeholder="Email"
-                        value={email}
-                        onChangeText={setEmail}
-                        autoCapitalize="none"
-                        leftIcon={{ type: 'font-awesome', name: 'envelope', color: 'grey' }}
-                    />
-                    <Input
-                        placeholder="Password"
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry
-                        leftIcon={{ type: 'material', name: 'lock', color: 'grey' }}
-                    />
-                    <Input
-                        placeholder="Confirm Password"
-                        value={confirmPassword}
-                        onChangeText={setConfirmPassword}
-                        secureTextEntry
-                        leftIcon={{ type: 'material', name: 'lock', color: 'grey' }}
-                    />
-                    <Button type='solid' buttonStyle={styles.button} title='Sign Up' onPress={signUp} />
-                </View>
-            </ScrollView>
+        <KeyboardAvoidingView>
+            <Image source={image} />
+            <Input value={email} onChangeText={setEmail} placeholder='Email' autoCapitalize="none" leftIcon={{ type: 'material', name: 'mail', color: 'grey' }} />
+            <Input value={password} onChangeText={setPassword} placeholder="Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock', color: 'grey' }} />
+            <Input value={confirmPassword} onChangeText={setConfirmPassword} placeholder="Confirm Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock', color: 'grey' }} />
+            <Button type='solid' title='Sign Up' onPress={signUp} />
         </KeyboardAvoidingView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    innerContainer: {
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    input: {
-        width: '80%',
-        padding: 8,
-        margin: 16,
-        borderBottomWidth: 1,
-    },
-    button: {
-        borderRadius: 4,
-        marginTop: 30,
-        minWidth: '80%',
-    },
-    logo: {
-        width: '60%',
-        height: '30%',
-        marginBottom: 20,
-        resizeMode: 'contain',
-        alignSelf: 'center',  // added to center the logo
-    },
-});
 
 export default SignUpScreen;

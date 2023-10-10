@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import ErrorMessage from './ErrorMessage';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import SignInButton from './SignInButton';
-import SignUpButton from './SignUpButton';
-import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../../firebase';
+import { Image, Input, Button } from '@rneui/themed';
+import KeyboardAvoidingView from '../../../components/KeyboardAvoidingView';
+const logo = require('../../../../assets/logo.png');
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -16,7 +14,7 @@ const SignIn = ({ navigation }) => {
 
   const handleSignIn = async () => {
     if (email === '' || password === '') {
-      setError('Email and password are mandatory.')
+      setError('email and password are required')
       return;
     }
 
@@ -28,53 +26,17 @@ const SignIn = ({ navigation }) => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
-        {!!error && <ErrorMessage message={error} />}
+    <KeyboardAvoidingView>
+      {!!error && <ErrorMessage message={error} />}
+      <Image source={logo} />
+      <Input value={email} onChangeText={setEmail} placeholder='Email' leftIcon={{ type: 'material', name: 'mail' }} />
+      <Input value={password} onChangeText={setPassword} placeholder='Password' leftIcon={{ type: 'material', name: 'lock' }} />
+      <Button title="Login" onPress={handleSignIn} />
 
-        <Image
-          source={require('../../../../assets/logo.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-
-        <View>
-          <EmailInput
-            value={email}
-            onChangeText={setEmail}
-          />
-          <PasswordInput
-            value={password}
-            onChangeText={setPassword}
-          />
-
-          <SignInButton onPress={handleSignIn} />
-
-          <ForgotPasswordButton navigation={navigation} onPress={() => navigation.navigate('ForgotPassword')} />
-
-          <SignUpButton onPress={() => navigation.navigate('SignUp')} />
-        </View>
-      </ScrollView>
+      <Button type='clear' title="Forgot Password?" onPress={() => navigation.navigate('ForgotPassword')} />
+      <Button type='clear' title="New User? Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#F5F5F5',
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-  },
-  logo: {
-    width: 250,
-    height: 250,
-    alignSelf: 'center',
-    marginBottom: 20,
-  },
-});
 
 export default SignIn;
