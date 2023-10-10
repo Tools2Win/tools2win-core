@@ -32,7 +32,6 @@ const theme = createTheme({
 const Stack = createStackNavigator();
 
 const AuthenticationManager = ({ children }) => {
-    return null;
     const { loading, user, signOut } = useAuth();
 
     const userHasAllowedRole = (allowedRoles) => {
