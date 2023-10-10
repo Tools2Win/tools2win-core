@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
-import { Input, ListItem, SearchBar } from 'react-native-elements';
+import { Input, ListItem, SearchBar } from '@rneui/themed';
 import { useSalesmanSelection } from '../../../hooks/useSalesmanSelection';
 
 const SalesmanSelection = () => {
