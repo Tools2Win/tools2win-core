@@ -3,8 +3,8 @@ import {
     View, StyleSheet, Image,
     KeyboardAvoidingView
 } from 'react-native';
-import { useInviteCode } from '../../../hooks/useInviteCode';
-import { auth } from '../../../firebase';
+import { useInviteCode } from '../../../../hooks/useInviteCode';
+import { auth } from '../../../../firebase';
 import { Text, Input, Button } from '@rneui/themed';
 
 const NoClient = () => {
@@ -24,7 +24,7 @@ const NoClient = () => {
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
             <Image
-                source={require('../../../assets/art_organization.jpg')}
+                source={require('../../../../assets/art_organization.jpg')}
                 style={styles.logo}
                 resizeMode="contain"
             />

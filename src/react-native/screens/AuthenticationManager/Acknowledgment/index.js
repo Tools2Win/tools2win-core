@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, StyleSheet, Alert, Image } from 'react-native';
 import { sendEmailVerification } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth } from 'tools2win-core/src/firebase';
 import { Text, useTheme, Button } from '@rneui/themed';
 
 const Acknowledgment = ({ navigation }) => {
@@ -35,7 +35,7 @@ const Acknowledgment = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image
-                source={require('../../../assets/art_verificationlink.jpg')}
+                source={require('../../../../assets/art_verificationlink.jpg')}
                 style={styles.logo}
                 resizeMode="contain"
             />

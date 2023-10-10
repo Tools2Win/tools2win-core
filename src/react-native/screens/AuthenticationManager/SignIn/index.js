@@ -7,7 +7,7 @@ import SignInButton from './SignInButton';
 import SignUpButton from './SignUpButton';
 import ForgotPasswordButton from './ForgotPasswordButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth } from '../../../../firebase';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ const SignIn = ({ navigation }) => {
         {!!error && <ErrorMessage message={error} />}
 
         <Image
-          source={require('../../../assets/logo.png')}
+          source={require('../../../../assets/logo.png')}
           style={styles.logo}
           resizeMode="contain"
         />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth } from 'tools2win-core/src/firebase';
 
 const ForgotPassword = ({ navigation }) => {
     const [email, setEmail] = useState('');

@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { View } from 'react-native';
-import { auth } from '../../../firebase';
+import { auth } from '../../../../firebase';
 import { Button, useTheme, Input } from '@rneui/themed';
 
 const SignUpScreen = () => {
@@ -43,7 +43,7 @@ const SignUpScreen = () => {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.innerContainer}>
                     <Image
-                        source={require('../../../assets/art_signup.jpg')}
+                        source={require('../../../../assets/art_signup.jpg')}
                         style={styles.logo}
                         resizeMode="contain"
                     />

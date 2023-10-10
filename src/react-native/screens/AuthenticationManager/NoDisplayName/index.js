@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import {
     View,
-    TouchableOpacity,
-    ActivityIndicator,
     StyleSheet,
     Image,
     KeyboardAvoidingView,
-    TextInput,
 } from 'react-native';
-import { useDisplayName } from '../../../hooks/useDisplayName';
-import { auth } from '../../../firebase';
+import { useDisplayName } from '../../../../hooks/useDisplayName';
+import { auth } from '../../../../firebase';
 import { Text, Input, Button } from '@rneui/themed';
 
 const NoDisplayName = () => {
@@ -31,7 +28,7 @@ const NoDisplayName = () => {
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
             <Image
-                source={require('../../../assets/art_displayname.jpg')}
+                source={require('../../../../assets/art_displayname.jpg')}
                 style={styles.logo}
                 resizeMode="contain"
             />
