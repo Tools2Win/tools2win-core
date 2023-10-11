@@ -29,8 +29,8 @@ const SignIn = ({ navigation }) => {
     <KeyboardAvoidingView>
       {!!error && <ErrorMessage message={error} />}
       <Image source={logo} />
-      <Input value={email} onChangeText={setEmail} placeholder='Email' leftIcon={{ type: 'material', name: 'mail' }} />
-      <Input value={password} onChangeText={setPassword} placeholder='Password' leftIcon={{ type: 'material', name: 'lock' }} />
+      <Input autoCapitalize='none' value={email} onChangeText={setEmail} placeholder='Email' leftIcon={{ type: 'material', name: 'mail' }} />
+      <Input autoCapitalize='none' secureTextEntry value={password} onChangeText={setPassword} placeholder='Password' leftIcon={{ type: 'material', name: 'lock' }} />
       <Button title="Login" onPress={handleSignIn} />
 
       <Button type='clear' title="Forgot Password?" onPress={() => navigation.navigate('ForgotPassword')} />
