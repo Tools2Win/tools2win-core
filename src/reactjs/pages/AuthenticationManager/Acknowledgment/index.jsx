@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { sendEmailVerification } from 'firebase/auth';
 import { auth } from 'tools2win-core/src/firebase';
+import { Button, Typography } from '@mui/material';
+import Container from '../../../components/Container';
+import Image from '../../../components/Image';
+import art from '../../../../assets/art_verificationlink.jpg';
 
 const Acknowledgment = () => {
     const [isVerifying, setIsVerifying] = useState(false);
@@ -29,17 +33,13 @@ const Acknowledgment = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <p style={styles.text}>Please check your email for a verification link.</p>
-            <p style={styles.subText}>If you can't find the email, check your spam/junk folder.</p>
-            <button style={styles.button} onClick={handleResendVerification}>
-                Resend Verification Email
-            </button>
-            <div style={styles.spacer} />
-            <button style={styles.button} onClick={handleRefreshToken} disabled={isVerifying}>
-                {isVerifying ? 'Verifying...' : "I've verified my email"}
-            </button>
-        </div>
+        <Container>
+            <Image image={art} />
+            <Typography textAlign='center' variant='h4'>Please check your email for a verification link</Typography>
+            <Typography textAlign='center' variant='body1'>If you can't find the email, check your spam folder</Typography>
+            <Button variant='contained' fullWidth onClick={handleRefreshToken} disabled={isVerifying}>I've verified my email</Button>
+            <Button fullWidth onClick={handleResendVerification}>Resend Verification Email</Button>
+        </Container>
     );
 };
 

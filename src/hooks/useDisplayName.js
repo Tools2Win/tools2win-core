@@ -4,7 +4,6 @@ import useApi from './useApi';
 
 export const useDisplayName = () => {
     const { put } = useApi();
-    console.log(put)
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 

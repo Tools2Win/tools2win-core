@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 const ErrorMessage = ({ message }) => (
     <div style={styles.error}>
         <p>{message}</p>

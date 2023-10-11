@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSalesmanSelection } from '../../../hooks/useSalesmanSelection';
+import { useSalesmanSelection } from '../../../../hooks/useSalesmanSelection';
+import Container from 'tools2win-core/src/reactjs/components/Container';
 
 const SalesmanSelection = () => {
     const { salesmen, loading, error, selectSalesman } = useSalesmanSelection();
@@ -12,38 +13,37 @@ const SalesmanSelection = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.content}>
-                <h1 style={styles.header}>Select a Salesman</h1>
-                <input
-                    type="text"
-                    placeholder="Search Salesman by Code"
-                    onChange={e => setEnteredSalesmanName(e.target.value)}
-                    value={enteredSalesmanName}
-                    disabled={loading}
-                    style={styles.searchBar}
-                />
-                {loading ? (
-                    <div style={styles.loading}>Loading...</div>
-                ) : (
-                    <ul style={styles.salesmanList}>
-                        {filteredSalesmen.map(item => (
-                            <li key={item.id} style={styles.salesmanItem} onClick={() => handleSalesmanSelection(item.id)}>
-                                <span>{item.name}</span> <small>{item.id}</small>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                {error && (
-                    <p style={styles.errorMessage}>
-                        {error || 'An error occurred.'}
-                    </p>
-                )}
-                <button style={styles.button} onClick={() => handleSalesmanSelection('SKIPPED')} disabled={loading}>
-                    Skip this for now
-                </button>
-            </div>
-        </div>
+        <Container>
+            <h1 style={styles.header}>Select a Salesman</h1>
+            <input
+                type="text"
+                placeholder="Search Salesman by Code"
+                onChange={e => setEnteredSalesmanName(e.target.value)}
+                value={enteredSalesmanName}
+                disabled={loading}
+                style={styles.searchBar}
+            />
+            {loading ? (
+                <div style={styles.loading}>Loading...</div>
+            ) : (
+                <ul style={styles.salesmanList}>
+                    {filteredSalesmen.map(item => (
+                        <li key={item.id} style={styles.salesmanItem} onClick={() => handleSalesmanSelection(item.id)}>
+                            <span>{item.name}</span> <small>{item.id}</small>
+                        </li>
+                    ))}
+                </ul>
+            )}
+            {error && (
+                <p style={styles.errorMessage}>
+                    {error || 'An error occurred.'}
+                </p>
+            )}
+            <button style={styles.button} onClick={() => handleSalesmanSelection('SKIPPED')} disabled={loading}>
+                Skip this for now
+            </button>
+        </Container>
+
     );
 };
 
