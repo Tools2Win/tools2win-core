@@ -38,9 +38,9 @@ const SignUpScreen = () => {
     return (
         <KeyboardAvoidingView>
             <Image source={image} />
-            <Input value={email} onChangeText={setEmail} placeholder='Email' autoCapitalize="none" leftIcon={{ type: 'material', name: 'mail', color: 'grey' }} />
-            <Input value={password} onChangeText={setPassword} placeholder="Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock', color: 'grey' }} />
-            <Input value={confirmPassword} onChangeText={setConfirmPassword} placeholder="Confirm Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock', color: 'grey' }} />
+            <Input value={email} onChangeText={setEmail} placeholder='Email' autoCapitalize="none" leftIcon={{ type: 'material', name: 'mail' }} />
+            <Input value={password} onChangeText={setPassword} placeholder="Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock' }} />
+            <Input value={confirmPassword} onChangeText={setConfirmPassword} placeholder="Confirm Password" secureTextEntry leftIcon={{ type: 'material', name: 'lock' }} />
             <Button type='solid' title='Sign Up' onPress={signUp} />
         </KeyboardAvoidingView>
     );

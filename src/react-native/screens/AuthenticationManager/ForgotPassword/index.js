@@ -22,7 +22,7 @@ const ForgotPassword = ({ navigation }) => {
     return (
         <KeyboardAvoidingView>
             <Image source={art} />
-            <Input value={email} onChangeText={setEmail} placeholder='Email' leftIcon={{ type: 'material', name: 'mail' }} />
+            <Input autoCapitalize='none' value={email} onChangeText={setEmail} placeholder='Email' leftIcon={{ type: 'material', name: 'mail' }} />
             <Button title="Reset Password" onPress={resetPassword} />
         </KeyboardAvoidingView>
     );
