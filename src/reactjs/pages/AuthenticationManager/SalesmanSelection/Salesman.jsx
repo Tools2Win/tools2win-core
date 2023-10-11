@@ -3,11 +3,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-const Salesman = ({ salesman, selectSalesman }) => {
+const Salesman = ({ index, style, salesman, selectSalesman }) => {
     return (
         <ListItem style={style} key={index} component="div" disablePadding>
             <ListItemButton>
-                <ListItemText primary={`Item ${index + 1}`} />
+                <ListItemText primary={salesman.name} secondary={salesman.id} onClick={() => selectSalesman(salesman.id)} />
             </ListItemButton>
         </ListItem>
     );
