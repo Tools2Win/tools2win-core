@@ -10,7 +10,7 @@ const colors = {
         dark: '#87A024', // Example darker shade
     },
     background: {
-        default: '#FCFCFC',
+        default: '#FBFCFD',
     },
     text: {
         primary: '#333333',
