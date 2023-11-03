@@ -4,4 +4,4 @@ export { default as CubeProvider } from './react-native/CubeProvider';
 export { default as useAuthContext } from './hooks/useAuthContext';
 export { default as useApi } from './hooks/useApi';
 export { default as colors } from './themes/colors';
-//tf????
+export { default as DrawerContent } from './react-native/components/DrawerContent';
