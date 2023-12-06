@@ -3,6 +3,8 @@ import { auth } from "../firebase";
 
 const BASE_URL = 'https://tools2win-api-v4.azurewebsites.net/api';
 
+const isFormData = (data) => data instanceof FormData;
+
 const execute = async (httpMethod, resource, data, params) => {
     let url = `${BASE_URL}/${resource}`;
 
@@ -23,10 +25,14 @@ const execute = async (httpMethod, resource, data, params) => {
         method: httpMethod,
         headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
         },
-        body: data ? JSON.stringify(data) : undefined,
+        body: isFormData(data) ? data : (data ? JSON.stringify(data) : undefined),
     };
+
+    // Only set 'Content-Type' for JSON data
+    if (!isFormData(data)) {
+        options.headers['Content-Type'] = 'application/json';
+    }
 
     console.log(token)
 

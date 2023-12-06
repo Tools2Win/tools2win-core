@@ -1,8 +1,8 @@
 const colors = {
     primary: {
         main: '#F25929',
-        light: '#F89E85', // Example lighter shade
-        dark: '#B23C21', // Example darker shade
+        light: '#F89E85',
+        dark: '#B23C21',
     },
     secondary: {
         main: '#B2D136',
