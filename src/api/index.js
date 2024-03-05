@@ -1,7 +1,7 @@
 // index.js
 import { auth } from "../firebase";
 
-const BASE_URL = 'https://tools2win-api-v4.azurewebsites.net/api';
+const BASE_URL = 'https://tools2win-api-v5.azurewebsites.net/api';
 
 const isFormData = (data) => data instanceof FormData;
 
