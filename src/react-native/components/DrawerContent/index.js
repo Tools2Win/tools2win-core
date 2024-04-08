@@ -4,7 +4,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 import useAuthContext from '../../../hooks/useAuthContext';
 import { useTheme, Button, Icon, Text } from '@rneui/themed';
 
-const DrawerContent = ({ props, children }) => {
+const DrawerContent = ({ props, children, version }) => {
     const { theme } = useTheme();
     const { user, signOut } = useAuthContext();
 
@@ -22,6 +22,8 @@ const DrawerContent = ({ props, children }) => {
             </DrawerContentScrollView>
 
             <View style={styles.footer}>
+                <Text style={styles.versionStyle}>{`v${version}`}</Text>
+
                 <Button
                     type='outline'
                     icon={() => <Icon name="launch" size={20} style={{ marginRight: 5 }} color={theme.colors.primary} />}
@@ -46,6 +48,11 @@ const styles = StyleSheet.create({
     footer: {
         paddingBottom: 20,
         paddingHorizontal: 20,
+    },
+    versionStyle: {
+        color: 'lightgray',
+        marginBottom: 10,
+        alignSelf: 'center'
     },
 });
 
