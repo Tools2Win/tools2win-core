@@ -22,7 +22,7 @@ const DrawerContent = ({ props, children, version }) => {
             </DrawerContentScrollView>
 
             <View style={styles.footer}>
-                <Text style={styles.versionStyle}>{`v${version}`}</Text>
+                {version && <Text style={styles.versionStyle}>{`v${version}`}</Text>}
 
                 <Button
                     type='outline'
