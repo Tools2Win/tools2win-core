@@ -46,12 +46,14 @@ const theme = createTheme({
     }
 })
 
-const SubscriptionManager = ({ children, subscriptionId }) => {
+const SubscriptionManager = ({ children, featureID }) => {
     const { subscriptions, loading } = useSubscriptions();
 
     if (loading) return null;
 
-    const subscribed = subscriptions.some(sub => sub.subscriptionID === subscriptionId && sub.status === 'active');
+    const subscribed = subscriptions.some(sub => sub.featureID === featureID && sub.status === 'active');
+
+    console.log(subscriptions)
 
     if (!subscribed) return <ThemeProvider theme={theme}><NoSubscription /></ThemeProvider>;
 
