@@ -1,9 +1,8 @@
 
-import { createStackNavigator } from '@react-navigation/stack';
 import colors from 'tools2win-core/src/themes/colors';
 import { ThemeProvider, createTheme } from '@rneui/themed';
 import { useSubscriptions } from 'tools2win-core/src/hooks/useSubscriptions';
-import { Text } from '@rneui/themed';
+import NoSubscription from 'tools2win-core/src/react-native/screens/SubscriptionManager/NoSubscription';
 
 const theme = createTheme({
     lightColors: {
@@ -54,7 +53,7 @@ const SubscriptionManager = ({ children, subscriptionId }) => {
 
     const subscribed = subscriptions.some(sub => sub.subscriptionID === subscriptionId && sub.status === 'active');
 
-    if (!subscribed) return <ThemeProvider theme={theme}><Text>Not Subscribed</Text></ThemeProvider>;
+    if (!subscribed) return <ThemeProvider theme={theme}><NoSubscription /></ThemeProvider>;
 
     return children;
 };
