@@ -53,8 +53,6 @@ const SubscriptionManager = ({ children, featureID }) => {
 
     const subscribed = subscriptions.some(sub => sub.featureID === featureID && sub.status === 'active');
 
-    console.log(subscriptions)
-
     if (!subscribed) return <ThemeProvider theme={theme}><NoSubscription /></ThemeProvider>;
 
     return children;
