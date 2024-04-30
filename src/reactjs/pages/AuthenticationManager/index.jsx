@@ -55,6 +55,13 @@ const AuthenticationManager = ({ children }) => {
 
     window.Intercom('boot', {
         app_id: 'w805oscg',
+        user_id: user.uid,
+        email: user.email,
+        name: user.displayName,
+        company: {
+            company_id: user.clientID,
+            name: user.clientName
+        }
     })
 
     return (
