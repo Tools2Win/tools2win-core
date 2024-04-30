@@ -53,6 +53,10 @@ const AuthenticationManager = ({ children }) => {
     if (!user.clientID) return <ThemeProvider theme={theme}><NoClient /></ThemeProvider>;
     if (!user.salesmanCode) return <ThemeProvider theme={theme}><SalesmanSelection /></ThemeProvider>;
 
+    window.Intercom('boot', {
+        app_id: 'w805oscg',
+    })
+
     return (
         <AuthContext.Provider value={{ user, refreshAuth, signOut }}>
             {children}
