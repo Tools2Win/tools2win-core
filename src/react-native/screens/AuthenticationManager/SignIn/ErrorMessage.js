@@ -6,10 +6,9 @@ const ErrorMessage = ({ message }) => (
 
 const styles = StyleSheet.create({
     error: {
-        marginBottom: 20,  // Increase space between error message and controls
+        marginBottom: 20,
         padding: 10,
-        color: '#fff',
-        backgroundColor: '#D54826FF',
+        backgroundColor: 'red',
     }
 });
 
