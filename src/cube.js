@@ -1,7 +1,7 @@
 import cubejs from '@cubejs-client/core';
 import * as api from './api';
 
-const CUBEJS_API_URL = 'https://peaceful-condor.aws-us-east-1.cubecloudapp.dev/cubejs-api/v1';
+const CUBEJS_API_URL = '70.167.38.129:4000/cubejs-api/v1';
 
 let apiTokenPromise;
 
